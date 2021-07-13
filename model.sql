@@ -6,6 +6,7 @@ given_name text NULL,
 family_name text NULL,
 profession text NULL,
 created_date datetime null
+--possible modified date
 );
 
 
