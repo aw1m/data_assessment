@@ -1,19 +1,7 @@
 import json
 import sqlite3
 from datetime import datetime as dt
-
-def remove_missing_strings(string:str):
-    if string is None:
-        return string
-    string = string.strip()
-    if string =="" or string=="none":
-        string =None
-    return string
-
-def clean_element(element:dict):
-    for key, value in element.items():
-        element[key] = remove_missing_strings(value)
-    return element
+from ingestion_tools import clean_element
 
 
 sqliteConnection = sqlite3.connect('data_assessment.db')
