@@ -1,6 +1,6 @@
 ## Problem
 
-You are a data enginneer for an E-Learning platform and have been tasked with converting raw data from the platform to a data warehouse using modern tools.
+You are a data engineer for an E-Learning platform and have been tasked with converting raw data from the platform to a data warehouse using modern tools.
 The platform delivers various assessments (questionnaires) to our learners and we must use those results to provide insights to our customers.
 Data is provided from the application in JSON Format. Data about the learners comes in the `users.json` file.  A submitted questionnaire will be stored in the `questionnaire-attempt.json` file. The questions that appear on the questionnaire
 are provided on the `questions.json` file. Finally information about the Questionnaire itself comes on the `questionnaire.json` file. 
