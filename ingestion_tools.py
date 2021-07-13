@@ -1,6 +1,6 @@
 
 def remove_missing(string:str):
-    if string is None:
+    if string is None or type(string)!=str:
         return string
     string = string.strip()
     if string =="" or string=="none":

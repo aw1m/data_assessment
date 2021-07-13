@@ -1,5 +1,6 @@
 import sqlite3
 import ingest_users
+from ingest_questions import ingest_questions
 
 sqliteConnection = sqlite3.connect('data_assessment.db')
 cursor = sqliteConnection.cursor()
@@ -8,10 +9,6 @@ with open("model.sql")  as query:
     cursor.executescript(query.read())
     sqliteConnection.commit()
 
-ingest_users(cursor, sqliteConnection)
+# ingest_users(cursor, sqliteConnection)
+ingest_questions(cursor, sqliteConnection)
 
-
-
-records = cursor.execute("SELECT * FROM users").fetchall()
-for record in records:
-    print(record)

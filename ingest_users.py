@@ -7,7 +7,7 @@ def ingest_users(cursor, sqliteConnection):
         user_json = json.loads(users_file.read())
         # print(user_json)
     for user in user_json:
-        clean_element(user)
+        user = clean_element(user)
         username, given_name, family_name, profession = user.values()
         if given_name is None or family_name is None or profession is None:
             print("Record is incomplete: {}".format(str(user)))
