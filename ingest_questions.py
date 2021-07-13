@@ -26,4 +26,4 @@ def ingest_questions(cursor, sqliteConnection):
                      values ( ?,?,?,?,?,?,?,?);""", [uuid,type,body,has_correctness,choice_uuid,is_correct,created_at,deleted_at])
             sqliteConnection.commit()
         # else:
-        #     print("duplicate found: \ndb:{} \n json:{}\n\n".format(str(records), str(question)))
+        #     print("duplicate found: \ndb:{}\njson:{}\n\n".format(str(records), str(question)))

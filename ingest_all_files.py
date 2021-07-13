@@ -16,7 +16,7 @@ with open("model.sql")  as query:
 # ingest_questions(cursor, sqliteConnection)
 #
 #
-# ingest_questionnaire(cursor, sqliteConnection)
+ingest_questionnaire(cursor, sqliteConnection)
 # records = cursor.execute("SELECT * FROM questionnaire").fetchall()
 # for record in records:
 #     print(record)
