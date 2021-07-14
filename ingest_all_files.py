@@ -13,9 +13,13 @@ with open("model.sql")  as query:
     sqliteConnection.commit()
 
 ingest_users(cursor, sqliteConnection)
+print("Proccessed Users")
 ingest_questions(cursor, sqliteConnection)
+print("Proccessed Questions")
 ingest_questionnaire(cursor, sqliteConnection)
+print("Proccessed Questionnaire")
 ingest_questionnaire_attempt(cursor, sqliteConnection)
-# records = cursor.execute("SELECT * FROM questionnaire").fetchall()
+print("Proccessed Questionnaire Attempts")
+records = cursor.execute("SELECT * FROM questionnaire").fetchall()
 # for record in records:
 #     print(record)
