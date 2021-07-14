@@ -36,10 +36,10 @@ created_at datetime NULL,
 --possible modified date
 PRIMARY KEY(uuid, question_uuid)
 );
---
---drop TABLE IF  EXISTS questionnaire;
---
-CREATE TABLE IF NOT EXISTS questionnaire (
+
+drop TABLE IF  EXISTS questionnaire_attempt;
+
+CREATE TABLE IF NOT EXISTS questionnaire_attempt (
 user_uuid  varchar(36) ,
 activity_uuid  varchar(36) ,
 questionnaire_uuid  varchar(36) ,
@@ -53,7 +53,7 @@ question_uuid  varchar(36) ,
 confidence text NULL,
 type text NULL,
 single_answer_choice_uuid  varchar(36),
-PRIMARY KEY(user_uuid, activity_uuid,questionnaire_uuid,attempt_number,context_uuid,question_uuid)
+PRIMARY KEY(user_uuid, activity_uuid,questionnaire_uuid,attempt_number,context_uuid,question_uuid,single_answer_choice_uuid)
 );
 
 --
