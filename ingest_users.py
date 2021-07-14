@@ -10,7 +10,7 @@ def ingest_users(cursor, sqliteConnection):
         user = clean_element(user)
         username, given_name, family_name, profession = user.values()
         if given_name is None or family_name is None or profession is None:
-            print("Record is incomplete: {}".format(str(user)))
+            # print("Record is incomplete: {}".format(str(user)))
             pass
 
         else:
@@ -24,5 +24,5 @@ def ingest_users(cursor, sqliteConnection):
                 values ( ?,?,?,?,?);""", [username, given_name, family_name, profession, dt.now()])
                 sqliteConnection.commit()
 
-            else:
-                print("User already exist username:{} ".format(username))
+            # else:
+            #     print("User already exist username:{} ".format(username))

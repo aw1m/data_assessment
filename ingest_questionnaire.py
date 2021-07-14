@@ -33,5 +33,5 @@ def ingest_questionnaire(cursor, sqliteConnection):
                      insert into questionnaire
                      values ( ?,?,?,?,?,?);""", [ uuid,name,context,question_uuid,is_required,dt.now()])#
             sqliteConnection.commit()
-        else:
-            print("duplicate found: \ndb:{}\njson:{}\n\n".format(str(records), str(questionnaire)))
+        # else:
+        #     print("duplicate found: \ndb:{}\njson:{}\n\n".format(str(records), str(questionnaire)))
