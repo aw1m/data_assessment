@@ -16,7 +16,6 @@ def ingest_questions(cursor, sqliteConnection):
              FROM questions q
              WHERE q.uuid = ? 
          and q.choice_uuid = ?
-         and q.deleted_at is null
          """, [uuid, choice_uuid])
         records = cursor.fetchall()
 
@@ -27,5 +26,7 @@ def ingest_questions(cursor, sqliteConnection):
             sqliteConnection.commit()
         else:
             not_processed.append(question)
+            # print(str([uuid,choice_uuid,type,body,has_correctness,is_correct,created_at,deleted_at]))
+            # print(records[0])
     write_not_proccessed('questions_not_processed.json', not_processed)
     return not_processed
