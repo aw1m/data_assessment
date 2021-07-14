@@ -20,6 +20,19 @@ ingest_questionnaire(cursor, sqliteConnection)
 print("Proccessed Questionnaire")
 ingest_questionnaire_attempt(cursor, sqliteConnection)
 print("Proccessed Questionnaire Attempts")
-records = cursor.execute("SELECT * FROM questionnaire").fetchall()
-# for record in records:
-#     print(record)
+
+
+
+cursor.execute("""
+ SELECT * 
+ FROM questionnaire_attempt qt
+    left join users u
+    on qt.user_uuid= u.username
+    where u.username is null;
+""")
+records = cursor.fetchall()
+for record in records:
+    print(record)
+
+cursor.close()
+sqliteConnection.close()

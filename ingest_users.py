@@ -10,20 +10,20 @@ def ingest_users(cursor, sqliteConnection):
     for user in user_json:
         user = clean_element(user)
         username, given_name, family_name, profession = user.values()
-        if given_name is None and family_name is None and profession is None:
-            not_processed.append(user)
-        else:
+        # if given_name is None and family_name is None and profession is None:
+        #     not_processed.append(user)
+        # else:
+        cursor.execute("""
+        SELECT * 
+        FROM users 
+        WHERE username = ? """, [username])
+        if not cursor.fetchall():
             cursor.execute("""
-            SELECT * 
-            FROM users 
-            WHERE username = ? """, [username])
-            if not cursor.fetchall():
-                cursor.execute("""
-                insert into users
-                values ( ?,?,?,?,?);""", [username, given_name, family_name, profession, dt.now()])
-                sqliteConnection.commit()
+            insert into users
+            values ( ?,?,?,?,?);""", [username, given_name, family_name, profession, dt.now()])
+            sqliteConnection.commit()
 
-            else:
-                not_processed.append(user)
+        else:
+            not_processed.append(user)
     write_not_proccessed('user_not_processed.json', not_processed)
     return not_processed
