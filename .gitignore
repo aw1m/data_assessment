@@ -1,3 +1,5 @@
 venv*
 .idea*
 *.pyc
+*_not_processed.json
+
