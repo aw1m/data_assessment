@@ -27,5 +27,5 @@ def ingest_questions(cursor, sqliteConnection):
             sqliteConnection.commit()
         else:
             not_processed.append(question)
-    write_not_proccessed('questionnaire_not_processed.json', not_processed)
+    write_not_proccessed('questions_not_processed.json', not_processed)
     return not_processed
