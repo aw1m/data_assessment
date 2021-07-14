@@ -10,16 +10,14 @@ def ingest_users(cursor, sqliteConnection):
     for user in user_json:
         user = clean_element(user)
         username, given_name, family_name, profession = user.values()
-        if given_name is None or family_name is None or profession is None:
+        if given_name is None and family_name is None and profession is None:
             not_processed.append(user)
-            pass
-
         else:
             cursor.execute("""
             SELECT * 
             FROM users 
             WHERE username = ? """, [username])
-            if cursor.fetchall() == []:
+            if not cursor.fetchall():
                 cursor.execute("""
                 insert into users
                 values ( ?,?,?,?,?);""", [username, given_name, family_name, profession, dt.now()])
